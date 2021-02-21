@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startPage">
+
+    <fragment
+        android:id="@+id/loginPage"
+        android:name="com.example.a021520211.LoginPage"
+        android:label="login_page"
+        tools:layout="@layout/login_page" >
+        <action
+            android:id="@+id/action_loginPage_to_myProfile"
+            app:destination="@id/myProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpPage"
+        android:name="com.example.a021520211.SignUpPage"
+        android:label="SignUpPage"
+        tools:layout="@layout/sign_up_page">
+        <action
+            android:id="@+id/action_signUpPage_to_myProfile"
+            app:destination="@id/myProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/myProfile"
+        android:name="com.example.a021520211.MyProfile"
+        android:label="MyProfile"
+        tools:layout="@layout/my_profile"/>
+    <fragment
+        android:id="@+id/startPage"
+        android:name="com.example.a021520211.StartPage"
+        android:label="fragment_start_page"
+        tools:layout="@layout/fragment_start_page" >
+        <action
+            android:id="@+id/action_startPage_to_signUpPage"
+            app:destination="@id/signUpPage" />
+        <action
+            android:id="@+id/action_startPage_to_loginPage"
+            app:destination="@id/loginPage" />
+    </fragment>
+</navigation>
