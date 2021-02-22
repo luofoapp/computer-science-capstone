@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.widget.Button;
 
 
 public class StartPage extends Fragment {
+    
+    FragmentTransaction fragmentTransaction;
 
     public StartPage() {
         // Required empty public constructor
@@ -20,40 +23,21 @@ public class StartPage extends Fragment {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//
-//        view.findViewById(R.id.sign_up_button).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                NavHostFragment.findNavController(StartPage.this)
-//                        .navigate(R.id.action_startPage_to_signUpPage);
-//            }
-//        });
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_start_page, container, false);
-        Button signUpBtn = (Button) v.findViewById(R.id.sign_up_button);
+        Button signUpBtn = v.findViewById(R.id.sign_up_button);
+
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = null;
-                fragment = new SignUpPage();
-                replaceFragment(fragment);
+                fragmentTransaction = getParentFragmentManager().beginTransaction();
+                SignUpPage signUpFrag = new SignUpPage();
+                fragmentTransaction.replace(R.id.content_container, signUpFrag);
+                fragmentTransaction.commit();
             }
         });
 
         return v;
     }
 
-    public void replaceFragment(Fragment someFragment) {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.startPage, someFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 }
