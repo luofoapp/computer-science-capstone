@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginPage_to_myProfile"
             app:destination="@id/myProfile" />
+        <action
+            android:id="@+id/action_loginPage_to_forgot"
+            app:destination="@id/forgot" />
     </fragment>
     <fragment
         android:id="@+id/signUpPage"
@@ -40,4 +43,9 @@
             android:id="@+id/action_startPage_to_loginPage"
             app:destination="@id/loginPage" />
     </fragment>
+    <fragment
+        android:id="@+id/forgot"
+        android:name="com.example.a021520211.Forgot"
+        android:label="fragment_forgot"
+        tools:layout="@layout/fragment_forgot" />
 </navigation>

@@ -32,7 +32,6 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:onClick="checkConfirmEmail"
         app:layout_constraintBottom_toTopOf="@+id/signUpEmailConfirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -90,6 +89,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
+    <LinearLayout
+        android:id="@+id/warningTexts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/create_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
 
     <Button
         android:id="@+id/create_btn"
