@@ -41,6 +41,7 @@ public class SignUpPage extends Fragment {
                     MyProfile myProfFrag = new MyProfile();
                     fragmentTransaction = getParentFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.content_container, myProfFrag);
+                    fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                 }
                 else {

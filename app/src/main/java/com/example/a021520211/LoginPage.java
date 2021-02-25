@@ -37,6 +37,7 @@ public class LoginPage extends Fragment {
                 MyProfile myProfFrag = new MyProfile();
                 fragmentTransaction = getParentFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.content_container, myProfFrag);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
@@ -47,6 +48,7 @@ public class LoginPage extends Fragment {
                 Forgot forgotFrag = new Forgot();
                 fragmentTransaction = getParentFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.content_container, forgotFrag);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });

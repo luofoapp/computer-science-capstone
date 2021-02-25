@@ -34,6 +34,7 @@ public class StartPage extends Fragment {
                 SignUpPage signUpFrag = new SignUpPage();
                 fragmentTransaction = getParentFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.content_container, signUpFrag);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
@@ -44,6 +45,7 @@ public class StartPage extends Fragment {
                 LoginPage loginFrag = new LoginPage();
                 fragmentTransaction = getParentFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.content_container, loginFrag);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
