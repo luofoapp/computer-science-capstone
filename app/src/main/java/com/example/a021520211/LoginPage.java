@@ -42,6 +42,17 @@ public class LoginPage extends Fragment {
             }
         });
 
+//        signInBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                HomePage homePageFrag = new HomePage();
+//                fragmentTransaction = getParentFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.content_container, homePageFrag);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//            }
+//        });
+
         forgotBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
