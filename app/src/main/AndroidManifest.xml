@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.a021520211">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.021520211">
-        <activity
-            android:name=".DrawerLayout"
-            android:label="@string/title_activity_drawer_layout"
-            android:theme="@style/Theme.021520211.NoActionBar"></activity>
+        <activity android:name=".NavigationActivity"></activity>
+        <!-- <activity -->
+        <!-- android:name=".DrawerLayout" -->
+        <!-- android:label="@string/title_activity_drawer_layout" -->
+        <!-- android:theme="@style/Theme.021520211.NoActionBar"></activity> -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

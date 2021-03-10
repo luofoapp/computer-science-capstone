@@ -1,6 +1,7 @@
 package com.example.a021520211;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -42,16 +43,20 @@ public class LoginPage extends Fragment {
             }
         });
 
-//        signInBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                startActivity(intent);
+
 //                HomePage homePageFrag = new HomePage();
 //                fragmentTransaction = getParentFragmentManager().beginTransaction();
 //                fragmentTransaction.replace(R.id.content_container, homePageFrag);
 //                fragmentTransaction.addToBackStack(null);
 //                fragmentTransaction.commit();
-//            }
-//        });
+            }
+        });
 
         forgotBtn.setOnClickListener(new View.OnClickListener() {
             @Override
