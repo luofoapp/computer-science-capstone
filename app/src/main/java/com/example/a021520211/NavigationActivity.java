@@ -15,6 +15,10 @@ import android.os.Bundle;
 import com.google.android.material.navigation.NavigationView;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.fragment.NavHostFragment;
+
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -23,6 +27,9 @@ public class NavigationActivity extends AppCompatActivity {
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
+    FragmentTransaction fragmentTransaction;
+    Fragment newFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +53,52 @@ public class NavigationActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch(id)
                 {
-                    case R.id.account:
-                        Toast.makeText(NavigationActivity.this, "My Account",Toast.LENGTH_SHORT).show();break;
-                    case R.id.settings:
-                        Toast.makeText(NavigationActivity.this, "Settings",Toast.LENGTH_SHORT).show();break;
-                    case R.id.mycart:
-                        Toast.makeText(NavigationActivity.this, "My Cart",Toast.LENGTH_SHORT).show();break;
+                    case R.id.find_friends_it:
+                        MPFindFriends findFriendsFrag = new MPFindFriends();
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.drawer_frags, findFriendsFrag);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    case R.id.recent_places_it:
+                        MPRecentPlaces recentPlacesFrag = new MPRecentPlaces();
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.drawer_frags, recentPlacesFrag);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    case R.id.my_friends_it:
+                        MPMyFriends myFriendsFrag = new MPMyFriends();
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.drawer_frags, myFriendsFrag);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    case R.id.my_ratings_it:
+                        MPMyRatings myRatingsFrag = new MPMyRatings();
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.drawer_frags, myRatingsFrag);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    case R.id.my_comments_it:
+                        MPMyComments myCommentsFrag = new MPMyComments();
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.drawer_frags, myCommentsFrag);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    case R.id.settings_it:
+                        MPSettings settingsFrag = new MPSettings();
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.drawer_frags, settingsFrag);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+//                    case R.id.account:
+//                        Toast.makeText(NavigationActivity.this, "My Account",Toast.LENGTH_SHORT).show();break;
+//                    case R.id.settings:
+//                        Toast.makeText(NavigationActivity.this, "Settings",Toast.LENGTH_SHORT).show();break;
+//                    case R.id.mycart:
+//                        Toast.makeText(NavigationActivity.this, "My Cart",Toast.LENGTH_SHORT).show();break;
                     default:
                         return true;
                 }
-                return true;
+//                return true;
             }
         });
 

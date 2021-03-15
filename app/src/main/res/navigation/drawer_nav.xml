@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_nav"
+    app:startDestination="@id/homePage">
+
+    <fragment
+        android:id="@+id/homePage"
+        android:name="com.example.a021520211.HomePage"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePage_to_MPFindFriends"
+            app:destination="@id/MPFindFriends" />
+        <action
+            android:id="@+id/action_homePage_to_MPMyComments"
+            app:destination="@id/MPMyComments" />
+        <action
+            android:id="@+id/action_homePage_to_MPMyRatings"
+            app:destination="@id/MPMyRatings" />
+        <action
+            android:id="@+id/action_homePage_to_MPMyFriends"
+            app:destination="@id/MPMyFriends" />
+        <action
+            android:id="@+id/action_homePage_to_MPRecentPlaces"
+            app:destination="@id/MPRecentPlaces" />
+        <action
+            android:id="@+id/action_homePage_to_MPSettings"
+            app:destination="@id/MPSettings" />
+    </fragment>
+    <fragment
+        android:id="@+id/MPFindFriends"
+        android:name="com.example.a021520211.MPFindFriends"
+        android:label="fragment_m_p_find_friends"
+        tools:layout="@layout/fragment_m_p_find_friends" />
+    <fragment
+        android:id="@+id/MPMyComments"
+        android:name="com.example.a021520211.MPMyComments"
+        android:label="fragment_m_p_my_comments"
+        tools:layout="@layout/fragment_m_p_my_comments" />
+    <fragment
+        android:id="@+id/MPMyFriends"
+        android:name="com.example.a021520211.MPMyFriends"
+        android:label="fragment_m_p_my_friends"
+        tools:layout="@layout/fragment_m_p_my_friends" />
+    <fragment
+        android:id="@+id/MPMyRatings"
+        android:name="com.example.a021520211.MPMyRatings"
+        android:label="fragment_m_p_my_ratings"
+        tools:layout="@layout/fragment_m_p_my_ratings" />
+    <fragment
+        android:id="@+id/MPRecentPlaces"
+        android:name="com.example.a021520211.MPRecentPlaces"
+        android:label="fragment_m_p_recent_places"
+        tools:layout="@layout/fragment_m_p_recent_places" />
+    <fragment
+        android:id="@+id/MPSettings"
+        android:name="com.example.a021520211.MPSettings"
+        android:label="fragment_m_p_settings"
+        tools:layout="@layout/fragment_m_p_settings" />
+</navigation>

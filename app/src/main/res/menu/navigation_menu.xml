@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<item android:id="@+id/account"
-    android:icon="@drawable/ic_menu_camera"
-    android:title="My Account"/>
-<item android:id="@+id/settings"
-    android:icon="@drawable/ic_menu_send"
-    android:title="Settings"/>
-<item android:id="@+id/mycart"
-    android:icon="@drawable/ic_menu_gallery"
-    android:title="My Cart"/>
+    <item android:id="@+id/find_friends_it"
+        android:icon="@drawable/ic_menu_camera"
+        android:title="Find Friends"/>
+
+    <item android:id="@+id/recent_places_it"
+        android:icon="@drawable/ic_menu_gallery"
+        android:title="Recent Places Visited"/>
+
+    <item android:id="@+id/my_friends_it"
+        android:icon="@drawable/ic_menu_send"
+        android:title="My Friends"/>
+
+    <item android:id="@+id/my_ratings_it"
+        android:icon="@drawable/ic_menu_send"
+        android:title="My Ratings"/>
+
+
+    <item android:id="@+id/my_comments_it"
+        android:icon="@drawable/ic_menu_send"
+        android:title="My Comments"/>
+
+    <item android:id="@+id/settings_it"
+        android:icon="@drawable/ic_menu_send"
+        android:title="Settings"/>
 
 </menu>
