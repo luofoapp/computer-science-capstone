@@ -29,13 +29,13 @@ public class NavigationActivity extends AppCompatActivity {
     private NavigationView nv;
     FragmentTransaction fragmentTransaction;
     Fragment newFragment;
+//    private DrawerLayout mDrawerLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
-
         dl = (DrawerLayout)findViewById(R.id.activity_nav);
 //        t = new ActionBarDrawerToggle(this, dl,R.string.Open, R.string.Close);
         t = new ActionBarDrawerToggle(this, dl, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -51,54 +51,58 @@ public class NavigationActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                switch(id)
-                {
+                switch (id) {
                     case R.id.find_friends_it:
                         MPFindFriends findFriendsFrag = new MPFindFriends();
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.drawer_frags, findFriendsFrag);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
+                        dl.closeDrawers();
+                        return true;
                     case R.id.recent_places_it:
                         MPRecentPlaces recentPlacesFrag = new MPRecentPlaces();
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.drawer_frags, recentPlacesFrag);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
+                        dl.closeDrawers();
+                        return true;
                     case R.id.my_friends_it:
                         MPMyFriends myFriendsFrag = new MPMyFriends();
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.drawer_frags, myFriendsFrag);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
+                        dl.closeDrawers();
+                        return true;
                     case R.id.my_ratings_it:
                         MPMyRatings myRatingsFrag = new MPMyRatings();
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.drawer_frags, myRatingsFrag);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
+                        dl.closeDrawers();
+                        return true;
                     case R.id.my_comments_it:
                         MPMyComments myCommentsFrag = new MPMyComments();
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.drawer_frags, myCommentsFrag);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
+                        dl.closeDrawers();
+                        return true;
                     case R.id.settings_it:
                         MPSettings settingsFrag = new MPSettings();
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.drawer_frags, settingsFrag);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
-//                    case R.id.account:
-//                        Toast.makeText(NavigationActivity.this, "My Account",Toast.LENGTH_SHORT).show();break;
-//                    case R.id.settings:
-//                        Toast.makeText(NavigationActivity.this, "Settings",Toast.LENGTH_SHORT).show();break;
-//                    case R.id.mycart:
-//                        Toast.makeText(NavigationActivity.this, "My Cart",Toast.LENGTH_SHORT).show();break;
-                    default:
+                        dl.closeDrawers();
                         return true;
+                    default:
+                        return onOptionsItemSelected(item);
                 }
-//                return true;
             }
         });
 
