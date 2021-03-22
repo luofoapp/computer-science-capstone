@@ -52,6 +52,14 @@ public class NavigationActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 switch (id) {
+                    case R.id.go_somewhere_it:
+                        HomePage homePageFrag = new HomePage();
+                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.drawer_frags, homePageFrag);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                        dl.closeDrawers();
+                        return true;
                     case R.id.find_friends_it:
                         MPFindFriends findFriendsFrag = new MPFindFriends();
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
