@@ -93,14 +93,14 @@ public class HomePage extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        map = googleMap;
-        map.setMinZoomPreference(12);
-        LatLng ny = new LatLng(40.7143528, -74.0059731);
-        map.moveCamera(CameraUpdateFactory.newLatLng(ny));
 //        map = googleMap;
-//        LatLng cheeter = new LatLng(39.21892860762234, -76.07043063105402);
-//        map.addMarker(new MarkerOptions().position(cheeter).title("I miss here"));
-//        map.moveCamera(CameraUpdateFactory.newLatLng(cheeter));
+//        map.setMinZoomPreference(12);
+//        LatLng ny = new LatLng(40.7143528, -74.0059731);
+//        map.moveCamera(CameraUpdateFactory.newLatLng(ny));
+        map = googleMap;
+        LatLng cheeter = new LatLng(39.21892860762234, -76.07043063105402);
+        map.addMarker(new MarkerOptions().position(cheeter).title("I miss here"));
+        map.moveCamera(CameraUpdateFactory.newLatLng(cheeter));
     }
 
 
