@@ -1,11 +1,13 @@
 package com.example.a021520211;
 
+import android.content.Intent;
 import android.media.ImageReader;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,12 +69,25 @@ public class HomePage extends Fragment implements OnMapReadyCallback {
         waitingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HPWaitingRoom waitingFrag = new HPWaitingRoom();
-                fragmentTransaction = getParentFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.drawer_frags, waitingFrag);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Intent intent = new Intent(getActivity(), AllDataTestActivity.class);
+                startActivity(intent);
+                Log.d("REACHED THE END OF CLK", "_______________hereeeeeeeeeeee____________");
+
             }
+//            public void onClick(View view) {
+//                HPWaitingRoom waitingFrag = new HPWaitingRoom();
+//                fragmentTransaction = getParentFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.drawer_frags, waitingFrag);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//            }
+//            public void onClick(View view) {
+//                AllDataTest waitingFrag = new AllDataTest();
+//                fragmentTransaction = getParentFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.drawer_frags, waitingFrag);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//            }
         });
 
         goBtn.setOnClickListener(new View.OnClickListener() {

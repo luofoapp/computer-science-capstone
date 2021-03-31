@@ -65,7 +65,7 @@
                 android:layout_weight="1"
                 android:textSize="9dp"
                 android:background="@android:drawable/dialog_holo_light_frame"
-                app:backgroundTint="#C0E4B8"
+                app:backgroundTint="@color/button_green"
                 android:text="Request a Monitor"
                 />
 
@@ -78,7 +78,7 @@
                 android:layout_weight="1"
                 android:textSize="9dp"
                 android:background="@android:drawable/dialog_holo_light_frame"
-                app:backgroundTint="#C0E4B8"
+                app:backgroundTint="@color/button_green"
                 android:text="Go to Waiting Room" />
 
             <Button
@@ -90,7 +90,7 @@
                 android:layout_weight="1"
                 android:textSize="9dp"
                 android:background="@android:drawable/dialog_holo_light_frame"
-                app:backgroundTint="#C0E4B8"
+                app:backgroundTint="@color/button_green"
                 android:text="Go Now" />
 
         </LinearLayout>
