@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/barely_white"
     tools:context=".LoginPage">
 
     <EditText
@@ -48,7 +49,7 @@
         android:layout_height="wrap_content"
         android:text="Sign in"
         android:background="@android:drawable/dialog_holo_light_frame"
-        app:backgroundTint="#64A697"
+        app:backgroundTint="@color/husk"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +61,7 @@
         android:layout_height="wrap_content"
         android:text="Forgot Password or Username"
         android:background="@android:drawable/dialog_holo_light_frame"
-        app:backgroundTint="#64A697"
+        app:backgroundTint="@color/husk"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

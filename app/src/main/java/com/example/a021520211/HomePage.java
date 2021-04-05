@@ -68,19 +68,19 @@ public class HomePage extends Fragment implements OnMapReadyCallback {
 
         waitingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AllDataTestActivity.class);
-                startActivity(intent);
-                Log.d("REACHED THE END OF CLK", "_______________hereeeeeeeeeeee____________");
-
-            }
 //            public void onClick(View view) {
-//                HPWaitingRoom waitingFrag = new HPWaitingRoom();
-//                fragmentTransaction = getParentFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.drawer_frags, waitingFrag);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
+//                Intent intent = new Intent(getActivity(), AllDataTestActivity.class);
+//                startActivity(intent);
+//                Log.d("REACHED THE END OF CLK", "_______________hereeeeeeeeeeee____________");
+//
 //            }
+            public void onClick(View view) {
+                HPWaitingRoom waitingFrag = new HPWaitingRoom();
+                fragmentTransaction = getParentFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.drawer_frags, waitingFrag);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
 //            public void onClick(View view) {
 //                AllDataTest waitingFrag = new AllDataTest();
 //                fragmentTransaction = getParentFragmentManager().beginTransaction();

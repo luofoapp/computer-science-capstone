@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/barely_white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.gms.maps.MapView
@@ -40,11 +41,11 @@
 
         <LinearLayout
             android:id="@+id/button_holder"
+            android:background="@color/barely_white"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_alignParentBottom="true"
             android:layout_weight="3"
-            android:background="@color/white"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingLeft="16dp"
@@ -63,9 +64,10 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/barlow_medium"
                 android:textSize="9dp"
                 android:background="@android:drawable/dialog_holo_light_frame"
-                app:backgroundTint="@color/button_green"
+                app:backgroundTint="@color/husk"
                 android:text="Request a Monitor"
                 />
 
@@ -75,22 +77,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
+                android:fontFamily="@font/barlow_medium"
                 android:layout_weight="1"
                 android:textSize="9dp"
                 android:background="@android:drawable/dialog_holo_light_frame"
-                app:backgroundTint="@color/button_green"
+                app:backgroundTint="@color/husk"
                 android:text="Go to Waiting Room" />
 
             <Button
                 android:id="@+id/go_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/barlow_medium"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_weight="1"
                 android:textSize="9dp"
                 android:background="@android:drawable/dialog_holo_light_frame"
-                app:backgroundTint="@color/button_green"
+                app:backgroundTint="@color/husk"
                 android:text="Go Now" />
 
         </LinearLayout>

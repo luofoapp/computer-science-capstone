@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 
@@ -59,21 +60,50 @@ public class AllDataTestActivity extends AppCompatActivity {
 
             @Override
             protected String doInBackground(Void... voids) {
+                URL url = null;
                 try {
-//                    URL url = new URL(urlWebService);
-                    URL url = new URL("http://127.0.0.1/app_info/app.php");
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-// ISSUE WITH INPUTSTREAMREADER, CLAIMS TO BE EMPTY
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null) {
-                        sb.append(json + "\n");
-                    }
-                    return sb.toString().trim();
-                } catch (Exception e) {
+                    url = new URL("http://www.android.com/");
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
                     return null;
                 }
+                HttpURLConnection urlConnection = null;
+                try {
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+                try {
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                    readStream(in);
+                    return String.valueOf(in);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return null;
+                } finally {
+                    urlConnection.disconnect();
+                }
+
+
+
+
+//                try {
+////                    URL url = new URL(urlWebService);
+//                    URL url = new URL("http://127.0.0.1/app_info/app.php");
+//                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+//// ISSUE WITH INPUTSTREAMREADER, CLAIMS TO BE EMPTY
+//                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+//                    String json;
+//                    StringBuilder sb = new StringBuilder();
+//
+//                    while ((json = bufferedReader.readLine()) != null) {
+//                        sb.append(json + "\n");
+//                    }
+//                    return sb.toString().trim();
+//                } catch (Exception e) {
+//                    return null;
+//                }
             }
         }
         DownloadJSON getJSON = new DownloadJSON();
