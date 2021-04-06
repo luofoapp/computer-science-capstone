@@ -55,10 +55,12 @@
         <ListView
             android:id="@+id/rfNames"
             android:fontFamily="@font/barlow_regular"
-            android:listSelector="@color/salmon"
+            android:dividerHeight="20.0sp"
+            android:divider="@android:color/transparent"
+            android:listSelector="@color/barely_salmon"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </RelativeLayout>>
+    </RelativeLayout>
 </LinearLayout>
 
 

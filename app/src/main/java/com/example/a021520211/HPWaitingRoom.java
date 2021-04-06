@@ -26,6 +26,7 @@ public class HPWaitingRoom extends Fragment {
     public ArrayList<String> generateList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Callie McMaster");
+        java.util.Collections.sort(arrayList);
         return arrayList;
     }
 }

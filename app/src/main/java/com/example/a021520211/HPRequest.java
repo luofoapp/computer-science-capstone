@@ -58,6 +58,7 @@ public class HPRequest extends Fragment {
         List<String> namesList = Arrays.asList( "Callie McMaster", "Michelle Ly", "Eloise Claire Lienert", "Omolola Sanusi", "Amy Lai");
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.addAll(namesList);
+        java.util.Collections.sort(arrayList);
         return arrayList;
     }
 
