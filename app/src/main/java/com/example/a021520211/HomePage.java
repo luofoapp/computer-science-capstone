@@ -74,20 +74,20 @@ public class HomePage extends Fragment implements OnMapReadyCallback {
 //                Log.d("REACHED THE END OF CLK", "_______________hereeeeeeeeeeee____________");
 //
 //            }
-            public void onClick(View view) {
-                HPWaitingRoom waitingFrag = new HPWaitingRoom();
-                fragmentTransaction = getParentFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.drawer_frags, waitingFrag);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
 //            public void onClick(View view) {
-//                AllDataTest waitingFrag = new AllDataTest();
+//                HPWaitingRoom waitingFrag = new HPWaitingRoom();
 //                fragmentTransaction = getParentFragmentManager().beginTransaction();
 //                fragmentTransaction.replace(R.id.drawer_frags, waitingFrag);
 //                fragmentTransaction.addToBackStack(null);
 //                fragmentTransaction.commit();
 //            }
+            public void onClick(View view) {
+                AllDataTest waitingFrag = new AllDataTest();
+                fragmentTransaction = getParentFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.drawer_frags, waitingFrag);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
         });
 
         goBtn.setOnClickListener(new View.OnClickListener() {

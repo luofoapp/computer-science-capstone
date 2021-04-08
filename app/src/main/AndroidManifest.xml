@@ -3,22 +3,24 @@
     package="com.example.a021520211">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.021520211">
 
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="@string/map_key"/>
-        <activity android:name=".NavigationActivity"></activity>
-        <activity android:name=".AllDataTestActivity"></activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key" />
 
-        <!-- <activity -->
+        <activity android:name=".NavigationActivity" />
+        <activity android:name=".AllDataTestActivity" /> <!-- <activity -->
         <!-- android:name=".DrawerLayout" -->
         <!-- android:label="@string/title_activity_drawer_layout" -->
         <!-- android:theme="@style/Theme.021520211.NoActionBar"></activity> -->

@@ -30,10 +30,13 @@ public class AllDataTest extends Fragment {
         View v = inflater.inflate(R.layout.all_data_test_yuh, container, false);
 
 
-   //     setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
 
-//        listView = (ListView) v.findViewById(R.id.listViewAA);
-//        downloadJSON("http://127.0.0.1/app_info/app.php");
+        listView = (ListView) v.findViewById(R.id.listViewAA);
+//        downloadJSON("https://127.0.0.1/app_info/app.php");
+        downloadJSON("http://10.0.2.2/app_info/app.php");
+//        downloadJSON("http://www.android.com/");
+
         return v;
     }
 
@@ -65,18 +68,15 @@ public class AllDataTest extends Fragment {
             protected String doInBackground(Void... voids) {
                 try {
                     Log.d(TAG, "___________________________THIS IS THE TOP OF TRY");
-
                     URL url = new URL(urlWebService);
+                    Log.d(TAG, "_______________HEREEEEEEEEEEEEEEEEEEEEEEEEEEE____________" + url);
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
                     StringBuilder sb = new StringBuilder();
-                    Log.d(TAG, "___________________________here was reached AAA");
                     Log.d(TAG, "_______________________________________________" + con.getResponseCode());
                     InputStreamReader isrBR = new InputStreamReader(con.getInputStream());
-                    Log.d(TAG, "___________________________here was reached BBB");
                     BufferedReader bufferedReader = new BufferedReader(isrBR);
                     Log.d(TAG, "___________________________here was reached CCC");
                     String json;
-                    Log.d(TAG, "_______________HEREEEEEEEEEEEEEEEEEEEEEEEEEEE____________");
                     while ((json = bufferedReader.readLine()) != null) {
                         sb.append(json + "\n");
                         Log.d(TAG, "___________________________end of while");
@@ -84,7 +84,7 @@ public class AllDataTest extends Fragment {
                     }
                     return sb.toString().trim();
                 } catch (Exception e) {
-                    Log.d(TAG, "___________________________caught an exception");
+                    Log.d(TAG, "___________________________caught an exception" + e);
                     return null;
                 }
             }
@@ -110,12 +110,12 @@ public class AllDataTest extends Fragment {
 
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-
-        listView = (ListView) getActivity().findViewById(R.id.listViewAA);
-        downloadJSON("http://127.0.0.1/app_info/app.php");
-    }
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+////        setContentView(R.layout.activity_main);
+//
+//        listView = (ListView) getActivity().findViewById(R.id.listViewAA);
+//        downloadJSON("https://127.0.0.1/app_info/app.php");
+//    }
 }
