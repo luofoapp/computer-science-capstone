@@ -13,36 +13,45 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SignUpPage extends Fragment {
-    private static final String COL2 = "f_name";
-    private static final String COL3 = "l_name";
-    private static final String COL4 = "email";
-    private static final String COL5 = "phone";
-    private static final String COL6 = "pass";
+
+    EditText firstName, lastName, email, confEmail, phoneNumber,pass, userName;
+    private static final String url = "http://10.0.2.2/app_info/insert_signup.php";
 
 
     FragmentTransaction fragmentTransaction;
-    DatabaseHelper nDatabaseHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.sign_up_page, container, false);
 
-        nDatabaseHelper = new DatabaseHelper(getActivity());
-        EditText firstName = v.findViewById(R.id.signUpFirstName);
-        EditText lastName = v.findViewById(R.id.signUpLastName);
-        EditText email = v.findViewById(R.id.signUpInitEmail);
-        EditText confEmail = v.findViewById(R.id.signUpEmailConfirm);
-        EditText phoneNumber =v.findViewById(R.id.editTextPhone);
-        EditText pass =v.findViewById(R.id.editTextTextPassword2);
+        firstName = v.findViewById(R.id.fName);
+        lastName = v.findViewById(R.id.lName);
+        email = v.findViewById(R.id.uEmail);
+        confEmail = v.findViewById(R.id.signUpEmailConfirm);
+        phoneNumber =v.findViewById(R.id.pNum);
+        userName = v.findViewById(R.id.uName);
+        pass =v.findViewById(R.id.pwd);
         LinearLayout lin = v.findViewById(R.id.warningTexts);
 
         lin.removeAllViews();
@@ -53,11 +62,7 @@ public class SignUpPage extends Fragment {
             public void onClick(View view) {
                 if (firstName.getText().toString().matches("") == false && lastName.getText().toString().matches("") == false && isValidEmail(email.getText().toString()) == true && matchConfEmail() == true && pass.getText().toString().matches("") == false && phoneNumber.getText().toString().matches("") == false) {
                     //upload new user info to database
-                    addData(COL2, firstName.getText().toString());
-                    addData(COL3, lastName.getText().toString());
-                    addData(COL4, email.getText().toString());
-                    addData(COL5, phoneNumber.getText().toString());
-                    addData(COL6, pass.getText().toString());
+                    insertData();
 
 
                     MyProfile myProfFrag = new MyProfile();
@@ -115,20 +120,51 @@ public class SignUpPage extends Fragment {
         return v;
     }
 
-    public void addData(String COLUMN, String newEntry) {
-        boolean insertData = nDatabaseHelper.addData(COLUMN, newEntry);
+    private void insertData() {
+        final String pFirstName = firstName.getText().toString().trim();
+        final String pLastName = lastName.getText().toString().trim();
+        final String pUsername = userName.getText().toString().trim();
+        final String pPassword = pass.getText().toString().trim();
+        final String pEmail = email.getText().toString().trim();
+        final String pPhoneNumber = phoneNumber.getText().toString().trim();
 
-        if (insertData) {
-            toastMessage("Awesome! You're account has been created.");
-        }
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                firstName.setText("");
+                lastName.setText("");
+                userName.setText("");
+                pass.setText("");
+                email.setText("");
+                phoneNumber.setText("");
+                Toast.makeText(getActivity().getApplicationContext(), response.toString(),Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity().getApplicationContext(), error.toString(),Toast.LENGTH_LONG).show();
 
-        else {
-            toastMessage("Something went wrong :/");
-        }
-    }
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param=new HashMap<String, String>();
+                param.put("firstName", pFirstName);
+                param.put("lastName", pLastName);
+                param.put("userName", pUsername);
+                param.put("pass", pPassword);
+                param.put("email", pEmail);
+                param.put("phoneNumber", pPhoneNumber);
 
-    private void toastMessage(String message) {
-        Toast.makeText(getActivity(),message, Toast.LENGTH_SHORT).show();
+                return param;
+            }
+        };
+
+
+        RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        queue.add(request);
+
     }
 
 }

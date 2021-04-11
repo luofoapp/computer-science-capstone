@@ -9,17 +9,17 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="300dp"
-        android:layout_height="120dp"
+        android:layout_height="60dp"
         android:textColor="@color/navy"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        android:text="CREATE AN ACCOUNT"
+        android:text="SIGN UP"
         android:fontFamily="@font/barlow_regular"
         android:textSize="45dp"/>
 
@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="1.0"
         android:hint="First name">
         <EditText
-            android:id="@+id/signUpFirstName"
+            android:id="@+id/fName"
             android:fontFamily="@font/barlow_medium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -53,7 +53,7 @@
         android:layout_height="70dp"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/textin3"
+        app:layout_constraintBottom_toTopOf="@+id/textin7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         android:backgroundTint="@color/white"
@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="1.0"
         android:hint="Last name">
         <EditText
-            android:id="@+id/signUpLastName"
+            android:id="@+id/lName"
             android:fontFamily="@font/barlow_medium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -73,6 +73,32 @@
             android:inputType="textPersonName"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textin7"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/textin3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textin2"
+        app:layout_constraintVertical_bias="1.0"
+        android:hint="Username">
+        <EditText
+            android:id="@+id/uName"
+            android:fontFamily="@font/barlow_medium"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:background="@color/barely_white"
+            android:textColorHint="@color/navy_light"
+            android:textColor="@color/navy"
+            android:inputType="textPersonName"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textin3"
@@ -87,7 +113,7 @@
         app:layout_constraintVertical_bias="1.0"
         android:hint="Email">
         <EditText
-            android:id="@+id/signUpInitEmail"
+            android:id="@+id/uEmail"
             android:fontFamily="@font/barlow_medium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -137,7 +163,7 @@
         app:layout_constraintVertical_bias="1.0"
         android:hint="Phone number">
         <EditText
-            android:id="@+id/editTextPhone"
+            android:id="@+id/pNum"
             android:fontFamily="@font/barlow_medium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -160,7 +186,7 @@
         app:layout_constraintVertical_bias="1.0"
         android:hint="Password">
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/pwd"
             android:fontFamily="@font/barlow_medium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
