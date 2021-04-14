@@ -20,7 +20,7 @@
         android:layout_marginBottom="29dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Username or email"
+        android:hint="Email"
         app:layout_constraintBottom_toTopOf="@+id/pass_signin_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -11,50 +11,56 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class LoginPage extends Fragment {
     FragmentTransaction fragmentTransaction;
-
-
+    EditText emailInput, passwordInput;
+    Button forgotBtn;
+    int allow;
+    private static final String url="http://10.0.2.2/app_info/check_login_creds.php";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
 
         View v = inflater.inflate(R.layout.login_page, container, false);
-        EditText usernameInput = v.findViewById(R.id.user_email_input);
-        EditText passwordInput = v.findViewById(R.id.pass_signin_input);
-        Button signInBtn = v.findViewById(R.id.sign_in_button);
-        Button forgotBtn = v.findViewById(R.id.forgot_btn);
 
+        emailInput = v.findViewById(R.id.user_email_input);
+        passwordInput = v.findViewById(R.id.pass_signin_input);
+        allow = 0;
 
-        signInBtn.setOnClickListener(new View.OnClickListener() {
+        forgotBtn  = v.findViewById(R.id.forgot_btn);
+
+        v.findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyProfile myProfFrag = new MyProfile();
-                fragmentTransaction = getParentFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.content_container, myProfFrag);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
-        signInBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(getActivity(), NavigationActivity.class);
-                startActivity(intent);
-
-//                HomePage homePageFrag = new HomePage();
-//                fragmentTransaction = getParentFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.content_container, homePageFrag);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
+                if (emailInput.getText().toString().matches("") == false && passwordInput.getText().toString().matches("") == false) {
+                checkData();
+                if (allow == 1) {
+                        Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        //do not go through
+                    }
+                }
             }
         });
 
@@ -69,17 +75,44 @@ public class LoginPage extends Fragment {
             }
         });
 
-//        public static isValidEmail(CharSequence target) {
-
-
-
         return v;
+    }
+
+    private void checkData() {
+        final String pPass = passwordInput.getText().toString().trim();
+        final String pEmail = emailInput.getText().toString().trim();
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                emailInput.setText("");
+                passwordInput.setText("");
+                Toast.makeText(getActivity().getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity().getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> param = new HashMap<String, String>();
+                param.put("emailInput", pEmail);
+                param.put("passwordInput", pPass);
+                return param;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        queue.add(request);
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
 
 }

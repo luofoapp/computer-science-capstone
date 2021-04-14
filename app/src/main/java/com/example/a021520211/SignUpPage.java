@@ -1,5 +1,6 @@
 package com.example.a021520211;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -64,12 +65,14 @@ public class SignUpPage extends Fragment {
                     //upload new user info to database
                     insertData();
 
+                    Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                    startActivity(intent);
 
-                    MyProfile myProfFrag = new MyProfile();
-                    fragmentTransaction = getParentFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.content_container, myProfFrag);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+//                    MyProfile myProfFrag = new MyProfile();
+//                    fragmentTransaction = getParentFragmentManager().beginTransaction();
+//                    fragmentTransaction.replace(R.id.content_container, myProfFrag);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
                 }
                 else {
                     lin.removeAllViews();
@@ -143,7 +146,6 @@ public class SignUpPage extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getActivity().getApplicationContext(), error.toString(),Toast.LENGTH_LONG).show();
-
             }
         }){
             @Nullable
@@ -156,7 +158,6 @@ public class SignUpPage extends Fragment {
                 param.put("pass", pPassword);
                 param.put("email", pEmail);
                 param.put("phoneNumber", pPhoneNumber);
-
                 return param;
             }
         };
