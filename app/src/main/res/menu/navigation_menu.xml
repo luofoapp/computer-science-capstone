@@ -21,11 +21,6 @@
         android:icon="@drawable/ic_menu_send"
         android:title="My Ratings"/>
 
-
-    <item android:id="@+id/my_comments_it"
-        android:icon="@drawable/ic_menu_send"
-        android:title="My Comments"/>
-
     <item android:id="@+id/settings_it"
         android:icon="@drawable/ic_menu_send"
         android:title="Settings"/>

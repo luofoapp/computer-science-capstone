@@ -92,14 +92,6 @@ public class NavigationActivity extends AppCompatActivity {
                         fragmentTransaction.commit();
                         dl.closeDrawers();
                         return true;
-                    case R.id.my_comments_it:
-                        MPMyComments myCommentsFrag = new MPMyComments();
-                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.drawer_frags, myCommentsFrag);
-                        fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.commit();
-                        dl.closeDrawers();
-                        return true;
                     case R.id.settings_it:
                         MPSettings settingsFrag = new MPSettings();
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();

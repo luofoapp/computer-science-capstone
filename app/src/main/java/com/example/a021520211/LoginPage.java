@@ -3,9 +3,8 @@ package com.example.a021520211;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.util.Patterns;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,13 +27,14 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class LoginPage extends Fragment {
     FragmentTransaction fragmentTransaction;
     EditText emailInput, passwordInput;
     Button forgotBtn;
-    int allow;
+    String allow;
     private static final String url="http://10.0.2.2/app_info/check_login_creds.php";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class LoginPage extends Fragment {
 
         emailInput = v.findViewById(R.id.user_email_input);
         passwordInput = v.findViewById(R.id.pass_signin_input);
-        allow = 0;
+        allow = "0";
 
         forgotBtn  = v.findViewById(R.id.forgot_btn);
 
@@ -52,14 +52,7 @@ public class LoginPage extends Fragment {
             @Override
             public void onClick(View view) {
                 if (emailInput.getText().toString().matches("") == false && passwordInput.getText().toString().matches("") == false) {
-                checkData();
-                if (allow == 1) {
-                        Intent intent = new Intent(getActivity(), NavigationActivity.class);
-                        startActivity(intent);
-                    }
-                    else {
-                        //do not go through
-                    }
+                    checkData();
                 }
             }
         });
@@ -74,7 +67,6 @@ public class LoginPage extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
         return v;
     }
 
@@ -85,10 +77,11 @@ public class LoginPage extends Fragment {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                String testingA = response.toString();
+                testingA.toString().trim();
+                checkAllow(testingA);
                 emailInput.setText("");
                 passwordInput.setText("");
-                Toast.makeText(getActivity().getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -108,7 +101,24 @@ public class LoginPage extends Fragment {
 
         RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
         queue.add(request);
+    }
 
+    public void checkAllow (String testA) {
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (testA.equals("1")) {
+                    Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                    startActivity(intent);
+                }
+                else {
+//                    emailInput.setText("its not "+testA);
+                    Toast.makeText(getActivity().getApplicationContext(), "Incorrect email or password", Toast.LENGTH_LONG).show();
+                }
+            }
+        }, 1500);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
